@@ -67,15 +67,10 @@ const sliderContainerRight = document.querySelector(".slider-items");
 // ?carico esclusivamente le nuove immagini a destra
 for (let i = 0; i < images.length; i++) {
     const imageS = images[i];
-    const sliderItem = `<div class="item"><img src="${imageS.image}" alt=""></div>`;    
+    const sliderItem = `<div class="item"><img src="${imageS.image}" alt=""></div>`;
     sliderContainerRight.innerHTML += sliderItem;
-    console.log(sliderContainerRight)
+    console.log(sliderContainerRight);
 }
-
-// ?creo un array contenente solo i title degli oggetti dell array principale
-
-// ?creo un array contenente solo i text degli oggetti dell array principale
-
 
 //Creo un ulteriore variabile che lego all'elemento o elementi html, in questo caso i div che conterranno le img, specificando
 // con l'etichetta 0 in questo caso, che il primo elemento, oltre la classe di defaul .item gli si debba aggiungere anche
@@ -88,10 +83,8 @@ let index = 0;
 rowItemRight[index].classList.add("active");
 
 
-
 // BONUS 2 
-
-// creazione variabili legate ai 2 button
+// creazione variabili legate ai 2 button dentro lo slider
 
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
@@ -110,8 +103,12 @@ let reverseAutoPlay = 0;
 let sensoMarciaAvanti = true;
 let contatore = 0;
 
-// RICHIAMO IL PRIMO AUTOPLAY
-generalAutoPlay();
+
+// RICHIAMO DALL HTML I 2 BUTTON IN ALTO 
+
+const btnPlayStop = document.querySelector("#play-stop");
+const btnUpDown = document.querySelector("#up-down");
+console.log(btnPlayStop, btnUpDown);
 
 // QUESTA E' LA FUNZIONE DI DEFAUL CHE ATTIVA L'AUTOPLAY IN AVANTI AL SEMPLICE CARICAMENTO DELLA PAGINA COMPRENDENDO ANCHE I CLICK E GLI HOVER
 function generalAutoPlay() {
@@ -131,7 +128,7 @@ function generalAutoPlay() {
             // ingrandisco a sx l'immagine selezionata
             card.innerHTML = `<img src="${images[index].image}" alt="Card">`;
             card.innerHTML += `<h3 class="title text-center">${images[index].title}</h3>`;
-            card.innerHTML += `<h5 class="text text-center">${images[index].text}</h5>`;
+            card.innerHTML += `<h5 class="text">${images[index].text}</h5>`;
             // aggiungo lo stato di opacità 1 all img successiva sulla dx
             rowItemRight[index].classList.add("active");
             contatore++;
@@ -152,8 +149,6 @@ function generalAutoPlay() {
             contatore++;
             console.log(contatore, "lo slider gira all'indietro dato che la variabile senso di marcia è: ", sensoMarciaAvanti);
         }
-
-
         // Alla pressione del tasto next........
         next.addEventListener("click", nextBtn);
 
@@ -172,11 +167,35 @@ function generalAutoPlay() {
         document.querySelector(".actual-image").addEventListener("mouseout", () => {
             clearInterval(firstAutoPlay);
             result();
-
         });
 
     }, 3000);
 }
+
+
+//! FUNZIONALITA DEI NUOVI BUTTONI IN ALTO
+
+
+let pressPlay = true;
+
+//**BUTTON START AND STOP 
+
+btnPlayStop.addEventListener("click", () => {
+    if (pressPlay) {
+        generalAutoPlay();        
+        resetMouse();
+        pressPlay = false;
+    } else {
+        clearInterval(firstAutoPlay);
+        pressPlay = true;
+
+    }
+});
+
+
+//** BUTTON REVERSE
+btnUpDown.addEventListener("click", () => { (sensoMarciaAvanti) === true ? prevBtn() : nextBtn()}) ;
+
 
 // Function del primo autoplay
 
