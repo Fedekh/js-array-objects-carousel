@@ -1,0 +1,93 @@
+img {
+  width: 100%;
+}
+
+body {
+  background-color: rgb(35, 37, 36);
+}
+
+
+.container {
+  width: 70%;
+  height: 80vh;
+  margin: 70px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.slider {
+  position: relative;
+  height: 100%;
+  
+}
+
+.actual {
+  height: 100%;
+  
+
+}
+
+.actual-image {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.actual-image img {
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.slider {
+  height: 100%;
+}
+
+.slider-items {
+  height: 100%;
+
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MODIFICA DELEL CARATTERISTICHE SIA DI ITEM CHE DI ACTIVE */
+
+.item {
+  /* display: none; */
+  height: calc(100% / 5);
+  opacity: 0.3;
+}
+
+
+.active {
+  opacity: 1;
+}
+
+
+.prev,
+.next {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(16, 105, 9, 0.8);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.prev {
+  top: 2px;
+}
+
+.next {
+  bottom: 2px;
+}
