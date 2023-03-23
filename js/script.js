@@ -154,26 +154,24 @@ function generalAutoPlay() {
 
         // Alla pressione del tasto prev........
         prev.addEventListener("click", prevBtn);
-
         // BONUS 2
+        // // al passaggio dell'hover....
+        // document.querySelector(".actual-image").addEventListener("mouseover", () => {
+        //     clearInterval(firstAutoPlay);
+        //     resetMouse();
+        // });
 
-        // al passaggio dell'hover....
-        document.querySelector(".actual-image").addEventListener("mouseover", () => {
-            clearInterval(firstAutoPlay);
-            resetMouse();
-        });
-
-        //al togliere dell'hover
-        document.querySelector(".actual-image").addEventListener("mouseout", () => {
-            clearInterval(firstAutoPlay);
-            result();
-        });
+        // //al togliere dell'hover
+        // document.querySelector(".actual-image").addEventListener("mouseout", () => {
+        //     clearInterval(firstAutoPlay);
+        //     result();
+        // });
 
     }, 3000);
 }
 
 
-//! FUNZIONALITA DEI NUOVI BUTTONI IN ALTO
+//! FUNZIONALITA DEI NUOVI BUTTONI IN ALTO, il primo da fa play and pause, la freccia a mo' di rotonda inverte il senso di marcia
 
 
 let pressPlay = true;
@@ -188,7 +186,6 @@ btnPlayStop.addEventListener("click", () => {
     } else {
         clearInterval(firstAutoPlay);
         pressPlay = true;
-
     }
 });
 
