@@ -45,14 +45,13 @@ h1 {
 
 .actual .text {
   position: absolute;
-  z-index: 2;
-  
+  /* z-index: 2;   */
   bottom:10%;
 }
 
 .actual .title{
   position: absolute;
-  z-index: 2;
+  /* z-index: 2; */
   top: 90%;
 }
 

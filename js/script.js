@@ -59,24 +59,22 @@ const images = [
 ];
 
 
-const itemCont = document.querySelector(".slider-items");
-// console.log(itemCont);
 
-// tramite ciclo for, stampero in console log tutti questi elementi, che scorrerà ogni l'etichetta di images e da 0 a 4, cosi da creare image
-// formato dai 5 elementi (da 0 a 4) dell'array di partenza images
+// ?creo lo slider-items di destra
+const sliderContainerRight = document.querySelector(".slider-items");
 
+
+// ?carico esclusivamente le nuove immagini a destra
 for (let i = 0; i < images.length; i++) {
-    // creo una variabile d'appoggio "items"
     const imageS = images[i];
-    // creo quindi ogni singolo elemento [] che comporrà l'array sfruttando un contatore
-    const sliderItem = `<div class="item"><img src="${imageS.image}" alt=""></div>`;
-    // console.log(sliderItem); 
-    // ora aggiungo in maniera dinamica all'interno di questa variabile contenitore precedenemnte dichiarata come aggancio a un elemento html, ogni
-    // elemento array
-    itemCont.innerHTML += sliderItem;
-    console.log(itemCont)
+    const sliderItem = `<div class="item"><img src="${imageS.image}" alt=""></div>`;    
+    sliderContainerRight.innerHTML += sliderItem;
+    console.log(sliderContainerRight)
 }
 
+// ?creo un array contenente solo i title degli oggetti dell array principale
+
+// ?creo un array contenente solo i text degli oggetti dell array principale
 
 
 //Creo un ulteriore variabile che lego all'elemento o elementi html, in questo caso i div che conterranno le img, specificando
@@ -85,11 +83,11 @@ for (let i = 0; i < images.length; i++) {
 
 // IMPOSTO PRIMO SLIDE OPACITA' 1
 
-let rowItem = document.getElementsByClassName("item");
+let rowItemRight = document.getElementsByClassName("item");
 let index = 0;
+rowItemRight[index].classList.add("active");
 
-rowItem[index].classList.add("active");
-// MILESTONE 3
+
 
 // BONUS 2 
 
@@ -99,12 +97,9 @@ const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 console.log(prev, next);
 
-// creo variabile in cui nell'html conterrà l'immagine attuale grande
+
+// ?creo variabile in cui nell'html conterrà a sinistra la card con l'attuale img + h2 + p
 let card = document.querySelector(".actual-image");
-
-
-
-
 console.log(card, typeof card);
 
 
@@ -124,24 +119,26 @@ function generalAutoPlay() {
         resetMouse();
         if (sensoMarciaAvanti === true) {
             // tolgo lo stato di opacita 1 all'img attuale sulla dx                 
-            rowItem[index].classList.remove("active");
+            rowItemRight[index].classList.remove("active");
             // incremento l'indice
             index++;
             // Controllo per cominciare da capo
             if (index === images.length) {
-                // rowItem[index].classList.remove("active");
+                // rowItemRight[index].classList.remove("active");
                 index = 0;
-                // rowItem[index].classList.add("active");        
+                // rowItemRight[index].classList.add("active");        
             }
             // ingrandisco a sx l'immagine selezionata
-            card.innerHTML = `${rowItem[index].image} <h3 class="title text-center">${rowItem[index].title}</h3> <h5 class="text text-center">${rowItem[index].text}</h5>`;
+            card.innerHTML = `<img src="${images[index].image}" alt="Card">`;
+            card.innerHTML += `<h3 class="title text-center">${images[index].title}</h3>`;
+            card.innerHTML += `<h5 class="text text-center">${images[index].text}</h5>`;
             // aggiungo lo stato di opacità 1 all img successiva sulla dx
-            rowItem[index].classList.add("active");
+            rowItemRight[index].classList.add("active");
             contatore++;
             console.log(contatore, "lo slider gira in avanti dato che la variabile senso di marcia è: ", sensoMarciaAvanti);
         } else {
             // tolgo lo stato di non opacità all'img attuale
-            rowItem[index].classList.remove("active");
+            rowItemRight[index].classList.remove("active");
             // decremento l'indice
             index--;
             // eseguo un HTMLFormControlsCollection, se l'indice diventa negativo, lo resetto alla max lunghezza
@@ -149,8 +146,8 @@ function generalAutoPlay() {
                 index = images.length - 1;
             }
             // aggiungo lo stato di opacità all img successiva, o quella retro per meglio dire
-            rowItem[index].classList.add("active");
-            card.innerHTML = rowItem[index].innerHTML;
+            rowItemRight[index].classList.add("active");
+            card.innerHTML = rowItemRight[index].innerHTML;
 
             contatore++;
             console.log(contatore, "lo slider gira all'indietro dato che la variabile senso di marcia è: ", sensoMarciaAvanti);
