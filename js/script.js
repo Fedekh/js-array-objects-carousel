@@ -13,8 +13,9 @@
 // Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
 // Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
 // 
-//Milestone 2:
-// Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l'utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso sinistra.
+//Milestone 2: 
+// Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima
+// e l'utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso sinistra.
 //
 // BONUS 1:
 // Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
@@ -70,12 +71,13 @@ for (let i = 0; i < images.length; i++) {
     // creo quindi ogni singolo elemento [] che comporrà l'array sfruttando un contatore
     const sliderItem = `<div class="item"><img src="${imageS.image}" alt=""></div>`;
     // console.log(sliderItem); 
-
     // ora aggiungo in maniera dinamica all'interno di questa variabile contenitore precedenemnte dichiarata come aggancio a un elemento html, ogni
     // elemento array
     itemCont.innerHTML += sliderItem;
     console.log(itemCont)
 }
+
+
 
 //Creo un ulteriore variabile che lego all'elemento o elementi html, in questo caso i div che conterranno le img, specificando
 // con l'etichetta 0 in questo caso, che il primo elemento, oltre la classe di defaul .item gli si debba aggiungere anche
@@ -98,8 +100,12 @@ const next = document.querySelector(".next");
 console.log(prev, next);
 
 // creo variabile in cui nell'html conterrà l'immagine attuale grande
-let actualImage = document.querySelector(".actual-image");
-console.log(actualImage, typeof actualImage);
+let card = document.querySelector(".actual-image");
+
+
+
+
+console.log(card, typeof card);
 
 
 // !#############################################################################
@@ -128,7 +134,7 @@ function generalAutoPlay() {
                 // rowItem[index].classList.add("active");        
             }
             // ingrandisco a sx l'immagine selezionata
-            actualImage.innerHTML = rowItem[index].innerHTML;
+            card.innerHTML = `${rowItem[index].image} <h3 class="title text-center">${rowItem[index].title}</h3> <h5 class="text text-center">${rowItem[index].text}</h5>`;
             // aggiungo lo stato di opacità 1 all img successiva sulla dx
             rowItem[index].classList.add("active");
             contatore++;
@@ -144,7 +150,7 @@ function generalAutoPlay() {
             }
             // aggiungo lo stato di opacità all img successiva, o quella retro per meglio dire
             rowItem[index].classList.add("active");
-            actualImage.innerHTML = rowItem[index].innerHTML;
+            card.innerHTML = rowItem[index].innerHTML;
 
             contatore++;
             console.log(contatore, "lo slider gira all'indietro dato che la variabile senso di marcia è: ", sensoMarciaAvanti);
