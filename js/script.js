@@ -109,6 +109,9 @@ let contatore = 0;
 const btnPlayStop = document.querySelector("#play-stop");
 const btnUpDown = document.querySelector("#up-down");
 console.log(btnPlayStop, btnUpDown);
+card.innerHTML = `<img src="${images[0].image}" alt="Card">`;
+card.innerHTML += `<h3 class="title text-center">${images[0].title}</h3>`;
+card.innerHTML += `<h5 class="text">${images[0].text}</h5>`;
 
 // QUESTA E' LA FUNZIONE DI DEFAUL CHE ATTIVA L'AUTOPLAY IN AVANTI AL SEMPLICE CARICAMENTO DELLA PAGINA COMPRENDENDO ANCHE I CLICK E GLI HOVER
 function generalAutoPlay() {
@@ -154,18 +157,7 @@ function generalAutoPlay() {
 
         // Alla pressione del tasto prev........
         prev.addEventListener("click", prevBtn);
-        // BONUS 2
-        // // al passaggio dell'hover....
-        // document.querySelector(".actual-image").addEventListener("mouseover", () => {
-        //     clearInterval(firstAutoPlay);
-        //     resetMouse();
-        // });
 
-        // //al togliere dell'hover
-        // document.querySelector(".actual-image").addEventListener("mouseout", () => {
-        //     clearInterval(firstAutoPlay);
-        //     result();
-        // });
 
     }, 3000);
 }
@@ -180,7 +172,7 @@ let pressPlay = true;
 
 btnPlayStop.addEventListener("click", () => {
     if (pressPlay) {
-        generalAutoPlay();        
+        generalAutoPlay();
         resetMouse();
         pressPlay = false;
     } else {
@@ -191,7 +183,7 @@ btnPlayStop.addEventListener("click", () => {
 
 
 //** BUTTON REVERSE
-btnUpDown.addEventListener("click", () => { (sensoMarciaAvanti) === true ? prevBtn() : nextBtn()}) ;
+btnUpDown.addEventListener("click", () => { (sensoMarciaAvanti) === true ? prevBtn() : nextBtn() });
 
 
 // Function del primo autoplay
