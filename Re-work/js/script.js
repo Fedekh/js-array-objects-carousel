@@ -107,13 +107,54 @@ const prev = document.querySelector(".prev");
 
 
 next.addEventListener("click", function(){
+    sensoMarciaAvanti=true;
     go();
 });                                                     //sono 2 eventi tali per cui richiamando funzioni, fanno girare all'istante il carosello in avanti e dietro
                           
-// e di conseguenza farà vedere all'istante a sx l'immagine corrispondente
+                                                        // e di conseguenza farà vedere all'istante a sx l'immagine corrispondente
 prev.addEventListener("click", function(){
     sensoMarciaAvanti=false;
     go();
+});
+
+
+
+// ?Richiamo dall'html il div genitore tramite ID poi creo 2 "i" tag e li inserisco dentro dando opportune classi
+
+const comands = document.querySelector("#comands");
+const playStop = document.createElement("i");
+const reverse = document.createElement("i");
+comands.classList.add("fa-solid", "fa-play", "fa-2x");
+playStop.classList.add("fa-solid", "fa-play", "fa-2x");
+reverse.classList.add("fa-solid", "fa-rotate-left", "fa-2x");
+comands.append(playStop);
+comands.append(reverse);
+
+let clicked=true;
+
+
+//! aggiungo con "facilità" gli eventi anche a questi 2 ulteriori button BONUS 3
+
+playStop.addEventListener("click", function(){
+    if (clicked){
+        clearInterval(start);
+        clicked=false;
+    }else {
+        go();
+        clicked=true;
+    }
+});
+
+reverse.addEventListener("click", function(){
+   if (sensoMarciaAvanti){
+    sensoMarciaAvanti=false;
+    go();
+
+   }else{
+    sensoMarciaAvanti=true;
+    go();
+   }
+
 });
 
 
