@@ -132,6 +132,7 @@ function generalAutoPlay() {
             card.innerHTML = `<img src="${images[index].image}" alt="Card">`;
             card.innerHTML += `<h3 class="title text-center">${images[index].title}</h3>`;
             card.innerHTML += `<h5 class="text">${images[index].text}</h5>`;
+            
             // aggiungo lo stato di opacità 1 all img successiva sulla dx
             rowItemRight[index].classList.add("active");
             contatore++;

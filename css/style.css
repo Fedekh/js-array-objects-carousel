@@ -58,8 +58,7 @@ body {
   position: absolute;
   bottom:10%;
   left: 5%;
-
-  color: rgba(1, 0, 3, 0.813);
+  color: rgba(24, 253, 12, 0.813);
 
   }
 
@@ -92,6 +91,7 @@ body {
   /* display: none; */
   height: calc(100% / 5);
   opacity: 0.3;
+  cursor: pointer;
 }
 
 
