@@ -108,13 +108,13 @@ const prev = document.querySelector(".prev");
 
 next.addEventListener("click", function(){
     sensoMarciaAvanti=true;
-    go();
+    handleSliderMovement();
 });                                                     //sono 2 eventi tali per cui richiamando funzioni, fanno girare all'istante il carosello in avanti e dietro
                           
                                                         // e di conseguenza farà vedere all'istante a sx l'immagine corrispondente
 prev.addEventListener("click", function(){
     sensoMarciaAvanti=false;
-    go();
+    handleSliderMovement();
 });
 
 
@@ -140,7 +140,7 @@ playStop.addEventListener("click", function(){
         clearInterval(start);
         clicked=false;
     }else {
-        go();
+        handleSliderMovement();
         clicked=true;
     }
 });
@@ -148,11 +148,11 @@ playStop.addEventListener("click", function(){
 reverse.addEventListener("click", function(){
    if (sensoMarciaAvanti){
     sensoMarciaAvanti=false;
-    go();
+    handleSliderMovement();
 
    }else{
     sensoMarciaAvanti=true;
-    go();
+    handleSliderMovement();
    }
 
 });
@@ -169,7 +169,7 @@ reverse.addEventListener("click", function(){
 
 
 
-function go(){                      //?racchiude il succo delle altre 2 macro funzioni e vengono richiamate al click dei button nello slider
+function handleSliderMovement(){                      //?racchiude il succo delle altre 2 macro funzioni e vengono richiamate al click dei button nello slider
     clearInterval(start);                           
     sensoMarcia();    
     autoplay();
